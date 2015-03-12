@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get '/employees/:id' => 'employees#show'
+  get '/employees' => 'employees#index'
+  get '/employees/new' => 'employees#new'
+  get '/employees/:id' => 'employees#show', :as => :employee
+  post '/employees' => 'employees#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
