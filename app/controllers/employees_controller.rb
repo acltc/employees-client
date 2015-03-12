@@ -1,14 +1,10 @@
 class EmployeesController < ApplicationController
   def show
     @employee = Unirest.get("http://localhost:3000/employees/#{params[:id]}.json").body
-    # @employee = { "first_name" => "Jill" }
-    # @employee["first_name"]
   end
 
   def index
     @employees = Unirest.get("http://localhost:3000/employees.json").body["employees"]
-    p "JSON STUFF:"
-    p @employees
   end
 
   def new
