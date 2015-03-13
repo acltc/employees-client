@@ -1,10 +1,10 @@
 class EmployeesController < ApplicationController
   def show
-    employee_hash = Unirest.get("http://localhost:3000/employees/#{params[:id]}.json").body
-    @employee = Employee.new(employee_hash)
+    @employee = Employee.find(params[:id])
   end
 
   def index
+    # GOAL: @employees = Employee.all
     employees_array = Unirest.get("http://localhost:3000/employees.json").body["employees"]
     @employees = []
     employees_array.each do |employee_hash|

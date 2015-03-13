@@ -12,6 +12,11 @@ class Employee
     return "#{@first_name} #{@last_name}"
   end
 
+  def self.find(id)
+    employee_hash = Unirest.get("http://localhost:3000/employees/#{id}.json").body
+    return Employee.new(employee_hash)
+  end
+
   # def first_name
   #   return @first_name
   # end
