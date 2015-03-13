@@ -5,7 +5,11 @@ class EmployeesController < ApplicationController
   end
 
   def index
-    @employees = Unirest.get("http://localhost:3000/employees.json").body["employees"]
+    employees_array = Unirest.get("http://localhost:3000/employees.json").body["employees"]
+    @employees = []
+    employees_array.each do |employee_hash|
+      @employees << Employee.new(employee_hash)
+    end
   end
 
   def new
