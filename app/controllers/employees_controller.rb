@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
 
   def index
     # GOAL: @employees = Employee.all
-    employees_array = Unirest.get("#{ENV['API_BASE_URL']}/employees.json").body["employees"]
+    employees_array = Unirest.get("#{ENV['API_BASE_URL']}/employees.json", :headers => {"X-User-Email" => "test@test.com", "Authorization" => "Token token=#{ENV['API_KEY']}"}).body["employees"]
     @employees = []
     employees_array.each do |employee_hash|
       @employees << Employee.new(employee_hash)
