@@ -13,7 +13,7 @@ class Employee
   end
 
   def self.find(id)
-    employee_hash = Unirest.get("http://localhost:3000/employees/#{id}.json").body
+    employee_hash = Unirest.get("#{ENV['API_BASE_URL']}/employees/#{id}.json").body
     return Employee.new(employee_hash)
   end
 
